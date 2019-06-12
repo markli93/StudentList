@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is a React App with out node_modules. Please install all dependencies before running this app.
+
 ## Available Scripts
 
 In the project directory, you can run:
