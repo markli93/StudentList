@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This is a React App without node_modules. Please install all dependencies using npn install.
+This is a React App without node_modules. Please install all dependencies using npm install.
 
 This app allows it's user to add different tags to each student. User can also search a specific student by student name, tags or both.
 
