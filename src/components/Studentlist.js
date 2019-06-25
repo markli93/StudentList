@@ -53,13 +53,13 @@ export default class Studentlist extends React.Component{
     
 
     render(){ 
-
+        
         let searchResult = this.state.studentArry.filter(
             item =>{
                 if(this.state.searchName !== ''){
                     return item.firstName.toLowerCase().indexOf(this.state.searchName.toLowerCase()) !== -1 || item.lastName.toLowerCase().indexOf(this.state.searchName.toLowerCase()) !== -1;   
                 }
-                else if(this.state.searchTag !==''){
+                else if(this.state.searchTag !== ''){
                     let string = item.tags.toString()
                     return string.toLowerCase().indexOf(this.state.searchTag.toLowerCase()) !== -1;
                 }
@@ -68,6 +68,22 @@ export default class Studentlist extends React.Component{
                 }
             }
         )
+
+        let filteredResult= searchResult.filter(
+            item=>{
+                if(this.state.searchName !== ''){
+                    let string = item.tags.toString()
+                    return string.toLowerCase().indexOf(this.state.searchTag.toLowerCase()) !== -1;
+                }
+                else if(this.state.searchTag !== ''){
+                    return item.firstName.toLowerCase().indexOf(this.state.searchName.toLowerCase()) !== -1 || item.lastName.toLowerCase().indexOf(this.state.searchName.toLowerCase()) !== -1;   
+                }
+                else{
+                    return {item}
+                }    
+            }
+        )
+
         return(
             <div>
                 <div>
@@ -77,7 +93,7 @@ export default class Studentlist extends React.Component{
                     <div className='search--container'>
                         <input type='text'placeholder="Search by Tag" onChange={this.searchByTag}/>
                     </div>
-                    {searchResult.map(item =>(
+                    {filteredResult.map(item =>(
                         <StudentInfo
                         first={item.firstName}
                         last={item.lastName}
